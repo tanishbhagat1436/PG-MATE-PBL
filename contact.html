@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - PG Mate</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #eafaf1, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background-color: #144d30;
+    }
+
+    .logo-box {
+      padding: 10px 15px;
+      background-color: white;
+      border-radius: 5px;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #144d30;
+    }
+
+    .nav-links a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .contact-container {
+      max-width: 700px;
+      margin: 80px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-container h2 {
+      text-align: center;
+      color: #144d30;
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contact-list li {
+      font-size: 18px;
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      background: #f0f9f4;
+      border-left: 6px solid #23a276;
+      border-radius: 5px;
+    }
+
+    .back-btn {
+      display: block;
+      width: fit-content;
+      margin: 30px auto 0 auto;
+      text-decoration: none;
+      padding: 12px 30px;
+      background: #144d30;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #0f3b26;
+    }
+
+    @media (max-width: 600px) {
+      .contact-container {
+        margin: 40px 20px;
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo-box">
+      <span class="logo-text">PG</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="auth.html">Login</a>
+      <a href="auth.html">Signup</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <ul class="contact-list">
+      
+      <li><strong>Tanish</strong>: 9082523591</li>
+      <li><strong>Poojan</strong>: 7304806407</li>
+      <li><strong>Neel</strong>: 9820655137</li>
+      <li><strong>Meet</strong>: 7977950628</li>
+    </ul>
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+
+</body>
+</html>
