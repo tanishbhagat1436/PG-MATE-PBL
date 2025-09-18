@@ -1,0 +1,288 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: #fff;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 56px 0 56px;
+    background: #27563b;
+}
+.logo-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px 34px;
+}
+.logo-pg {
+    font-family: 'Oswald', 'Montserrat', Arial, sans-serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #27563B;
+    letter-spacing: 2px;
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 36px;
+    margin: 0;
+    padding: 0;
+}
+.nav-links > li > a {
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: .7px;
+    transition: color 0.2s;
+}
+.nav-links > li > a:hover {
+    color: #b2dbc1;
+}
+.nav-btns {
+    display: flex;
+    gap: 13px;
+}
+.btn {
+    padding: 8.5px 32px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.2s,color 0.2s;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+/* nav buttons */
+.signup {
+    background: #629978;
+    color: #fff;
+}
+.signup:hover {
+    background: #497258;
+}
+.login {
+    background: #dde7e0;
+    color: #27563B;
+}
+.login:hover {
+    background: #c6d4cb;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    align-items: stretch;
+    background: #27563B;
+    padding-bottom: 0;
+    position: relative;
+}
+.hero .hero-pg {
+    margin-bottom: 18px;
+}
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 410px;
+    padding-left: 56px;
+    z-index: 2;
+    min-width: 325px;
+}
+.mate-title {
+    font-family: 'Oswald', 'Montserrat', Arial, sans-serif;
+    font-size: 5.6rem;
+    font-weight: 900;
+    letter-spacing: 10px;
+    color: #fff;
+    line-height: 0.93;
+    margin-bottom: 0.2em;
+}
+.mate-headline {
+    font-size: 2.07rem;
+    font-weight: 700;
+    color: #27563B;
+    background: #fff;
+    display: inline-block;
+    padding: 10px 22px 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+.mate-caption {
+    font-size: 1.07rem;
+    color: #222;
+    background: #ddd;
+    display: inline-block;
+    padding: 7px 13px 7px 10px;
+    border-radius: 5px;
+    font-style: italic;
+    color: #27563B;
+}
+
+.hero-image {
+    flex: 1.1;
+    min-width: 310px;
+    min-height: 410px;
+    height: 410px;
+    max-width: 480px;
+    background: url('Screenshot-2025-09-14-134834.jpg') center center/cover;
+    clip-path: polygon(37% 0,100% 0,100% 100%,0 100%);
+    margin-left: -80px;
+    margin-top: 0;
+    z-index: 1;
+}
+
+/* FEATURES */
+.features-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #fff;
+    gap: 51px;
+    padding: 36px 10px 14px 10px;
+}
+.feature-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 176px;
+    font-weight: 700;
+    font-size: 1.13rem;
+    color: #27563B;
+}
+.feat-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+}
+.feat-title {
+    text-align: center;
+}
+.explore-container {
+    width: 100%;
+    text-align: center;
+    margin: 21px 0 37px 0;
+}
+.explore-btn {
+    background: #377553;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.22rem;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    padding: 14px 63px;
+    transition: background 0.16s;
+}
+.explore-btn:hover {
+    background: #27563B;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background-color: rgba(0,0,0,0.25);
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: #fff;
+    padding: 36px 26px 30px 26px;
+    border-radius: 16px;
+    width: 95%;
+    max-width: 350px;
+    position: relative;
+    box-shadow: 0 6px 24px rgba(39,86,59,0.19);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.close-modal {
+    position: absolute;
+    top: 7px;
+    right: 19px;
+    font-size: 2.1em;
+    color: #27563B;
+    cursor: pointer;
+}
+.form-switch {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+.switch-btn {
+    border: none;
+    outline: none;
+    background: #dde7e0;
+    color: #27563B;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 6px 11px;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+.switch-btn.active, .switch-btn:hover {
+    background: #629978;
+    color: #fff;
+}
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 13px;
+    margin-bottom: 7px;
+}
+.auth-form input, .auth-form select {
+    padding: 9px 13px;
+    border-radius: 7px;
+    border: 1.2px solid #629978;
+    font-size: 1rem;
+}
+.auth-form button {
+    margin-top: 8px;
+}
+.hidden { display: none; }
+.modal-submit {
+    background: #629978;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.08rem;
+    padding: 9px 0;
+    transition: background 0.16s;
+}
+.modal-submit:hover {
+    background: #27563B;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .navbar { flex-wrap: wrap; gap: 8px; }
+    .main-section { padding-left: 0; padding-right: 0; }
+    .hero { flex-direction: column; }
+    .hero-left { height: auto; padding-left: 18px; }
+    .hero-image { margin: 20px auto 0 auto; height: 230px; min-width: 190px; max-width: 320px;}
+    .features-row { gap: 20px; padding: 22px 2px 8px 2px;}
+    .explore-btn { padding: 10px 32px;}
+}
+@media (max-width: 600px) {
+    .navbar { flex-direction: column; align-items: flex-start; padding: 5px;}
+    .logo-box { padding: 8px 14px;}
+    .hero { flex-direction: column; }
+    .hero-left { padding-left: 7px;}
+    .mate-title { font-size: 2.2rem;}
+    .hero-image { min-width: 100px; min-height: 120px; max-width: 150px;}
+    .features-row { flex-direction: column; align-items: center;}
+    .feature-cell { min-width: 0; font-size: 1rem; margin-bottom: 13px;}
+}
