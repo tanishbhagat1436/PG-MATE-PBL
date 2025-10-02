@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PG Mate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card" id="tenant-login">
+            <div class="auth-image-section" style="background-image: url('images/login-bg-tenant.jpg');">
+                <div class="overlay-content">
+                    <h2>Welcome, Tenant!</h2>
+                    <p>Find your perfect space and manage your stay with ease.</p>
+                </div>
+            </div>
+            <div class="auth-form-section">
+                <a href="index.html" class="home-link">← Back to Home</a>
+                <h3>Tenant Login</h3>
+                <form action="dashboard.html">
+                    <div class="form-group">
+                        <label for="tenant-email">Email Address</label>
+                        <input type="email" id="tenant-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tenant-password">Password</label>
+                        <input type="password" id="tenant-password" name="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-cta">Log In</button>
+                </form>
+                <p class="auth-switch">Don't have an account? <a href="signup.html">Sign Up</a></p>
+                <p class="auth-switch">Are you an Owner? <a href="#" onclick="switchLogin('owner')">Login Here</a></p>
+            </div>
+        </div>
+        <div class="auth-card" id="owner-login" style="display: none;">
+            <div class="auth-image-section" style="background-image: url('images/login-bg-owner.jpg');">
+                 <div class="overlay-content">
+                    <h2>Welcome, Owner!</h2>
+                    <p>Manage your properties and residents effortlessly.</p>
+                </div>
+            </div>
+            <div class="auth-form-section">
+                <a href="index.html" class="home-link">← Back to Home</a>
+                <h3>Owner Login</h3>
+                <form action="owner-dashboard.html">
+                    <div class="form-group">
+                        <label for="owner-email">Email Address</label>
+                        <input type="email" id="owner-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="owner-password">Password</label>
+                        <input type="password" id="owner-password" name="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-cta">Log In</button>
+                </form>
+                <p class="auth-switch">Don't have an account? <a href="signup.html">Sign Up</a></p>
+                <p class="auth-switch">Are you a Tenant? <a href="#" onclick="switchLogin('tenant')">Login Here</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - PG Mate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card" id="tenant-signup">
+            <div class="auth-image-section" style="background-image: url('images/login-bg-tenant.jpg');">
+                <div class="overlay-content">
+                    <h2>Join as a Tenant</h2>
+                    <p>Start your journey to finding the perfect PG accommodation.</p>
+                </div>
+            </div>
+            <div class="auth-form-section">
+                <a href="index.html" class="home-link">← Back to Home</a>
+                <h3>Create Tenant Account</h3>
+                <form id="signup-form-tenant">
+                    <div id="error-tenant" class="error-message"></div>
+                    <div class="form-group">
+                        <label for="tenant-signup-name">Full Name</label>
+                        <input type="text" id="tenant-signup-name" name="fullname" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tenant-signup-email">Email Address</label>
+                        <input type="email" id="tenant-signup-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password-tenant">Password</label>
+                        <input type="password" id="password-tenant" name="password" placeholder="Minimum 6 characters" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password-tenant">Confirm Password</label>
+                        <input type="password" id="confirm-password-tenant" name="confirm_password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-cta">Create Account</button>
+                </form>
+                <p class="auth-switch">Already have an account? <a href="login.html">Log In</a></p>
+                <p class="auth-switch">Signing up as an Owner? <a href="#" onclick="switchSignup('owner')">Click Here</a></p>
+            </div>
+        </div>
+        <div class="auth-card" id="owner-signup" style="display: none;">
+            <div class="auth-image-section" style="background-image: url('images/login-bg-owner.jpg');">
+                <div class="overlay-content">
+                    <h2>Join as an Owner</h2>
+                    <p>List your property and connect with potential tenants today.</p>
+                </div>
+            </div>
+            <div class="auth-form-section">
+                <a href="index.html" class="home-link">← Back to Home</a>
+                <h3>Create Owner Account</h3>
+                <form id="signup-form-owner">
+                    <div id="error-owner" class="error-message"></div>
+                    <div class="form-group">
+                        <label for="owner-signup-name">Full Name</label>
+                        <input type="text" id="owner-signup-name" name="fullname" placeholder="Jane Smith" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="owner-signup-email">Email Address</label>
+                        <input type="email" id="owner-signup-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password-owner">Password</label>
+                        <input type="password" id="password-owner" name="password" placeholder="Minimum 6 characters" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password-owner">Confirm Password</label>
+                        <input type="password" id="confirm-password-owner" name="confirm_password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-cta">Create Account</button>
+                </form>
+                <p class="auth-switch">Already have an account? <a href="login.html">Log In</a></p>
+                <p class="auth-switch">Signing up as a Tenant? <a href="#" onclick="switchSignup('tenant')">Click Here</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

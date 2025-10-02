@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PG Mate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* --- Google Fonts & General Setup --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+
+        :root {
+            --primary-green: #145A32;
+            --secondary-teal: #33A491;
+            --light-bg: #f8f9fa;
+            --dark-text: #343a40;
+            --border-color: #dee2e6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: var(--dark-text); background-color: var(--light-bg); }
+        a { text-decoration: none; cursor: pointer; }
+        footer { padding: 20px 50px; background-color: var(--dark-text); color: #ccc; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: white; text-decoration: none; font-weight: 500; }
+        
+        /* --- General Components --- */
+        .btn { padding: 10px 24px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; display: inline-block; border: 2px solid transparent; cursor: pointer; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: #495057; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Poppins'; font-size: 1rem; }
+        .pg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .pg-card { background-color: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s ease; position: relative; }
+        .pg-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
+        .pg-card-image { height: 200px; background-size: cover; background-position: center; }
+        .pg-card-content { padding: 20px; }
+        .pg-card-title { font-size: 1.4rem; font-weight: 700; color: var(--dark-text); }
+        .pg-card-location { color: #6c757d; }
+        .pg-card-price { font-size: 1.5rem; font-weight: 700; text-align: right; }
+        .no-results-message { text-align: center; font-size: 1.2rem; padding: 40px; color: #6c757d; }
+
+        /* =================================================================== */
+        /* --- TENANT DASHBOARD STYLES (Self-Contained) --- */
+        /* =================================================================== */
+        .dashboard-hero { 
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/dashboard-bg.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            color: white; 
+            padding: 20px 50px 120px 50px; 
+        }
+        .dashboard-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .dashboard-header .logo { 
+            font-size: 1.5rem; 
+            color: white; 
+            font-weight: 700; 
+            background: none; 
+            border: none; 
+            padding: 0; 
+        }
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .user-menu span { 
+            font-weight: 600; 
+        }
+        .btn-logout { 
+            background-color: var(--secondary-teal); 
+            color: white; 
+            padding: 8px 25px;
+            border-radius: 50px;
+        }
+        .hero-text h1 { 
+            text-align: center; 
+            font-size: 2.8rem; 
+            margin-top: 30px; 
+        }
+        .main-actions { 
+            margin-top: 20px; 
+            display: flex; 
+            justify-content: center; 
+        }
+        .action-btn { 
+            background-color: #0d2036; 
+            color: white; 
+            border: none; 
+            padding: 15px 30px; 
+            font-size: 1rem; 
+            font-weight: 600; 
+            cursor: pointer; 
+        }
+        .action-btn.active { 
+            background-color: #5BA86B; 
+        }
+        .dashboard-main-content { 
+            max-width: 1200px; 
+            margin: -80px auto 40px auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 2; 
+        }
+        .filter-search-section { 
+            background-color: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .pg-filter-form { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px; 
+        }
+        .pg-results-section { 
+            margin-top: 40px; 
+        }
+        .pg-results-section h2 { 
+            text-align: center; 
+            margin-bottom: 25px; 
+            color: var(--primary-green); 
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-hero">
+        <header class="dashboard-header">
+            <div class="logo"><i class="fas fa-home"></i> PG Mate</div>
+            <div class="user-menu">
+                <span>Welcome, User</span>
+                <a href="index.html" class="btn btn-logout">LogOut</a>
+            </div>
+        </header>
+        <div class="hero-text">
+            <h1>Your Perfect PG Companion</h1>
+            <div class="main-actions">
+                <a href="owner-dashboard.html" class="action-btn">List your PG with Us!</a>
+                <button class="action-btn active">Find PG nearby you</button>
+            </div>
+        </div>
+    </div>
+    <main class="dashboard-main-content">
+        <section class="filter-search-section">
+            <form id="pg-filter-form" class="pg-filter-form">
+                <div class="form-group">
+                    <label for="search-name-location">Search by Name or Location</label>
+                    <input type="text" id="search-name-location" name="search" placeholder="Enter PG name or address">
+                </div>
+                <div class="form-group">
+                    <label for="max-rent">Maximum Rent (₹)</label>
+                    <input type="number" id="max-rent" name="max_rent" placeholder="Enter maximum rent" min="0">
+                </div>
+               <div class="form-group">
+    <label for="location">Location</label>
+    <select id="location" name="location">
+        <option value="all">All Locations</option>
+        <optgroup label="Mumbai Metropolitan Region">
+            <option value="Mumbai - South">Mumbai - South</option>
+            <option value="Mumbai - Western Suburbs">Mumbai - Western Suburbs</option>
+            <option value="Mumbai - Central Suburbs">Mumbai - Central Suburbs</option>
+            <option value="Navi Mumbai">Navi Mumbai</option>
+            <option value="Thane">Thane</option>
+            <option value="Kalyan-Dombivli">Kalyan-Dombivli</option>
+            <option value="Mira-Bhayandar">Mira-Bhayandar</option>
+            <option value="Panvel">Panvel</option>
+            <option value="Vasai-Virar">Vasai-Virar</option>
+        </optgroup>
+        <optgroup label="Pune Metropolitan Region">
+            <option value="Pune - City Center">Pune - City Center</option>
+            <option value="Pimpri-Chinchwad">Pimpri-Chinchwad</option>
+            <option value="Hinjawadi">Hinjawadi</option>
+            <option value="Kharadi">Kharadi</option>
+            <option value="Viman Nagar">Viman Nagar</option>
+            <option value="Hadapsar">Hadapsar</option>
+        </optgroup>
+        <optgroup label="Other Major Cities">
+            <option value="Nagpur">Nagpur</option>
+            <option value="Nashik">Nashik</option>
+            <option value="Aurangabad">Aurangabad (Chh. Sambhaji Nagar)</option>
+            <option value="Solapur">Solapur</option>
+            <option value="Kolhapur">Kolhapur</option>
+            <option value="Amravati">Amravati</option>
+            <option value="Nanded">Nanded</option>
+            <option value="Sangli">Sangli</option>
+            <option value="Jalgaon">Jalgaon</option>
+            <option value="Akola">Akola</option>
+            <option value="Latur">Latur</option>
+            <option value="Dhule">Dhule</option>
+            <option value="Ahmednagar">Ahmednagar</option>
+            <option value="Chandrapur">Chandrapur</option>
+            <option value="Satara">Satara</option>
+            <option value="Ratnagiri">Ratnagiri</option>
+        </optgroup>
+    </select>
+</div>
+                <div class="form-group">
+                    <label for="pg-type">PG Type</label>
+                    <select id="pg-type" name="pg_type">
+                        <option value="all">All Types</option>
+                        <option value="Boys">Boys</option>
+                        <option value="Girls">Girls</option>
+                        <option value="Co-ed">Co-ed</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="room-type">Room Type</label>
+                    <select id="room-type" name="room_type">
+                        <option value="all">All Room Types</option>
+                        <option value="Single">Single Sharing</option>
+                        <option value="Double">Double Sharing</option>
+                        <option value="Triple">Triple Sharing</option>
+                    </select>
+                </div>
+            </form>
+        </section>
+        <section class="pg-results-section">
+            <h2 id="results-count">Displaying PGs...</h2>
+            <div id="pg-listings-grid" class="pg-grid"></div>
+            <p id="no-results-message" class="no-results-message" style="display: none;">No PGs found.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 PG Mate. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
